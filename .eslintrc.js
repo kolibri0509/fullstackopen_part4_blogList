@@ -2,7 +2,8 @@ module.exports = {
   'env': {
     'node': true,
     'commonjs': true,
-    'es2021': true
+    'es2021': true,
+    'jest': true
   },
   'overrides': [
     {
@@ -23,11 +24,11 @@ module.exports = {
   'rules': {
     'indent': [
       'error',
-      2
+      4
     ],
     'linebreak-style': [
       'error',
-      'unix'
+      'windows'
     ],
     'quotes': [
       'error',
