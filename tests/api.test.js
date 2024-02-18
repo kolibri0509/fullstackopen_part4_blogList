@@ -49,6 +49,23 @@ test('a valid blog can be added', async () => {
     assert.strictEqual(title.length, helper.initialBlogs.length+1)
     assert(title.includes('my github profile'))
 })
+test('no likes change to 0', async () => {
+    const newBlog = {
+        title: 'no likes change to 0',
+        author: 'kolibri0509',
+        url: 'https://github.com/kolibri0509',
+        likes:'',
+    }
+    await api
+        .post('/api/blogs')
+        .send(newBlog)
+        .expect(201)
+        .expect('Content-Type', /application\/json/)
+
+    const response = await api.get('/api/blogs')
+    const like = response.body.filter(b => b.title === 'no likes change to 0')
+    assert.strictEqual(like[0].likes, 0)
+})
 
 after(async () => {
     await mongoose.connection.close()

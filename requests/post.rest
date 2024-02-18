@@ -17,3 +17,13 @@ content-type: application/json
   "url": "https://github.com/kolibri0509",
   "likes": 100
 }
+###
+POST http://localhost:3003/api/blogs
+content-type: application/json
+
+{
+  "title": "Dont likes",
+  "author": "kolibri0509",
+  "likes":"",
+  "url": "https://github.com/kolibri0509"
+}
