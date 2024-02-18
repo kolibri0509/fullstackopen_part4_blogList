@@ -1,5 +1,19 @@
 const dummy = (blogs) => 1
 
+const initialBlogs = [
+    {
+        title:'First blog',
+        author:'Mary S.',
+        url:'https://github.com/kolibri0509',
+        likes:1000
+    },
+    {
+        title:'Second post',
+        author:'kolibri0509',
+        url:'https://github.com/kolibri0509',
+        likes:100
+    }
+]
 const totalLikes = (blogs) => {
     const reducer = (sum, item) => {
         return sum + item.likes
@@ -75,5 +89,6 @@ module.exports = {
     totalLikes,
     favoriteBlog,
     mostBlogs,
-    mostLikes
+    mostLikes,
+    initialBlogs
 }
