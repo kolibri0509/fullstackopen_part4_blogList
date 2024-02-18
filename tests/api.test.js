@@ -15,6 +15,12 @@ test('there are two blogs', async () => {
     const response = await api.get('/api/blogs')
     assert.strictEqual(response.body.length, 2)
 })
+test('id', async () => {
+    const response = await api.get('/api/blogs')
+    const result = Object.keys(response.body[0])
+    assert(result.includes('id'))
+})
+
 after(async () => {
     await mongoose.connection.close()
 })
