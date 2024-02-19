@@ -27,3 +27,31 @@ content-type: application/json
   "likes":"",
   "url": "https://github.com/kolibri0509"
 }
+###
+POST http://localhost:3003/api/blogs
+content-type: application/json
+
+{
+  "title": "Dont likes",
+  "author": "kolibri0509",
+  "likes":"",
+  "url": "https://github.com/kolibri0509"
+}
+###
+POST http://localhost:3003/api/blogs
+content-type: application/json
+
+{
+  "author": "kolibri0509",
+  "likes":"",
+  "url": "https://github.com/kolibri0509"
+}
+###
+POST http://localhost:3003/api/blogs
+content-type: application/json
+
+{
+  "title": "Dont likes",
+  "author": "kolibri0509",
+  "likes":""
+}

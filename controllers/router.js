@@ -12,13 +12,17 @@ blogsRouter.post('/', async (request, response) => {
     if(!body.likes){
         body.likes=0
     }
-    const blog = new Blog({
-        title: body.title,
-        author: body.author,
-        url: body.url,
-        likes: body.likes
-    })
-    const saveBlog = await blog.save()
-    response.status(201).json(saveBlog)
+    if(!body.title || !body.url){
+        response.status(400).end()
+    }else{
+        const blog = new Blog({
+            title: body.title,
+            author: body.author,
+            url: body.url,
+            likes: body.likes
+        })
+        const saveBlog = await blog.save()
+        response.status(201).json(saveBlog)
+    }
 })
 module.exports = blogsRouter

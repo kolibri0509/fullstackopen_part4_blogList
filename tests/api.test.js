@@ -31,6 +31,32 @@ test('id', async () => {
     const result = Object.keys(response.body[0])
     assert(result.includes('id'))
 })
+test('blog without title is not added', async () => {
+    const newBlog = {
+        author:'Henri Miller',
+        url:'https://miller.com',
+        likes: 2
+    }
+    await api
+        .post('/api/blogs')
+        .send(newBlog)
+        .expect(400)
+    const response = await api.get('/api/blogs')
+    assert.strictEqual(response.body.length, helper.initialBlogs.length)
+})
+test('blog without url is not added', async () => {
+    const newBlog = {
+        author:'Henri Miller',
+        title:'superMann',
+        likes: 122
+    }
+    await api
+        .post('/api/blogs')
+        .send(newBlog)
+        .expect(400)
+    const response = await api.get('/api/blogs')
+    assert.strictEqual(response.body.length, helper.initialBlogs.length)
+})
 test('a valid blog can be added', async () => {
     const newBlog = {
         title: 'my github profile',
