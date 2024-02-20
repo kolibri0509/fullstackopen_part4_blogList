@@ -1,5 +1,5 @@
 const { default: mongoose } = require('mongoose')
-const { test, after, beforeEach } = require('node:test')
+const { test, after, beforeEach, describe } = require('node:test')
 const assert = require('node:assert')
 const supertest = require('supertest')
 const app = require('../app')
@@ -91,6 +91,19 @@ test('no likes change to 0', async () => {
     const response = await api.get('/api/blogs')
     const like = response.body.filter(b => b.title === 'no likes change to 0')
     assert.strictEqual(like[0].likes, 0)
+})
+describe('deleting', () => {
+    test('deleting one blog', async () => {
+        const blogsAtStart = await helper.blogsInDb()
+        const deleteBlog = blogsAtStart[0]
+        await api
+            .delete(`/api/blogs/${deleteBlog.id}`)
+            .expect(204)
+        const blogsAtEnd = await helper.blogsInDb()
+        assert.strictEqual(blogsAtEnd.length, helper.initialBlogs.length-1)
+
+        const titles = blogsAtEnd.map(bl => bl.title)
+    })
 })
 
 after(async () => {
