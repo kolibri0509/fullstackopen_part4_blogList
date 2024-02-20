@@ -103,7 +103,25 @@ describe('deleting', () => {
         assert.strictEqual(blogsAtEnd.length, helper.initialBlogs.length-1)
 
         const titles = blogsAtEnd.map(bl => bl.title)
+        assert(!titles.includes(deleteBlog.title))
     })
+})
+test('updating blog', async () => {
+    const blogsAtStart = await helper.blogsInDb()
+    const likesStart = blogsAtStart[0].likes
+    const updateBlog = {
+        title: blogsAtStart[0].title,
+        author:blogsAtStart[0].author,
+        url:blogsAtStart[0].url,
+        likes:blogsAtStart[0].likes + 1
+    }
+    await api
+        .put(`/api/blogs/${blogsAtStart[0].id}`)
+        .send(updateBlog)
+        .expect(200)
+    const blogsAtEnd = await helper.blogsInDb()
+    const likesEnd = blogsAtEnd[0].likes
+    assert.strictEqual(likesEnd-likesStart, 1)
 })
 
 after(async () => {
