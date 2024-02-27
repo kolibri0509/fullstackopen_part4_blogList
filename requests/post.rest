@@ -55,3 +55,21 @@ content-type: application/json
   "author": "kolibri0509",
   "likes":""
 }
+###
+POST http://localhost:3003/api/authors
+content-type: application/json
+
+{
+  "username": "kolibri0509",
+  "name": "kolibri0509",
+  "password":"kolibri0509"
+}
+###
+POST http://localhost:3003/api/authors
+content-type: application/json
+
+{
+  "username": "Mary S.",
+  "name": "Mariya Spiridonova",
+  "password":"134484"
+}

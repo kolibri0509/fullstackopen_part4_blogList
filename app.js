@@ -2,6 +2,7 @@ const express = require('express')
 require('express-async-errors')
 const app = express()
 const blogsRouter = require('./controllers/router')
+const authorsRouter = require('./controllers/authors')
 const cors = require('cors')
 const mongoose = require('mongoose')
 const middleware = require('./utils/middleware')
@@ -24,6 +25,7 @@ mongoose.connect(config.MONGODB_URI)
     })
 
 app.use('/api/blogs', blogsRouter)
+app.use('/api/authors', authorsRouter)
 app.use(middleware.unknownEndpoint)
 
 module.exports = app
