@@ -5,6 +5,7 @@ const supertest = require('supertest')
 const app = require('../app')
 const api = supertest(app)
 const Blog = require('..//models/db')
+const Author = require('../models/author')
 const helper = require('../utils/list_helper')
 
 beforeEach(async () => {
@@ -122,6 +123,82 @@ test('updating blog', async () => {
     const blogsAtEnd = await helper.blogsInDb()
     const likesEnd = blogsAtEnd[0].likes
     assert.strictEqual(likesEnd-likesStart, 1)
+})
+
+describe('new author validation', () => {
+    beforeEach(async () => {
+        await Author.deleteMany({})
+
+        for(let author of helper.initialAuthors){
+            let authorObject = new Author(author)
+            await authorObject.save()
+        }
+    })
+    test('Too short username', async () => {
+        const newAuthor = {
+            username: 'Bo',
+            name: 'Bob',
+            password: '135'
+        }
+        await api
+            .post('/api/authors')
+            .send(newAuthor)
+            .expect(400)
+        const response = await api.get('/api/authors')
+        assert.strictEqual(response.body.length, helper.initialAuthors.length)
+    })
+    test('Too short password', async () => {
+        const newAuthor = {
+            username: 'Bobbing',
+            name: 'Bob',
+            password: '13'
+        }
+        await api
+            .post('/api/authors')
+            .send(newAuthor)
+            .expect(400)
+        const response = await api.get('/api/authors')
+        assert.strictEqual(response.body.length, helper.initialAuthors.length)
+    })
+    test('No username', async () => {
+        const newAuthor = {
+            username:'',
+            name: 'Bob',
+            password: '138'
+        }
+        await api
+            .post('/api/authors')
+            .send(newAuthor)
+            .expect(400)
+        const response = await api.get('/api/authors')
+        assert.strictEqual(response.body.length, helper.initialAuthors.length)
+    })
+    test('No password', async () => {
+        const newAuthor = {
+            username: 'Bobbing',
+            name: 'Bob',
+            password:''
+        }
+        await api
+            .post('/api/authors')
+            .send(newAuthor)
+            .expect(400)
+        const response = await api.get('/api/authors')
+        assert.strictEqual(response.body.length, helper.initialAuthors.length)
+    })
+    test('username must be unique', async () => {
+        const newAuthor = {
+            username: helper.initialAuthors[0].username,
+            name: 'Bob',
+            password: '135'
+        }
+        await api
+            .post('/api/authors')
+            .send(newAuthor)
+            .expect(400)
+        const response = await api.get('/api/authors')
+        assert.strictEqual(response.body.length, helper.initialAuthors.length)
+    })
 })
 
 after(async () => {

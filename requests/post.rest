@@ -73,3 +73,20 @@ content-type: application/json
   "name": "Mariya Spiridonova",
   "password":"134484"
 }
+###
+POST http://localhost:3003/api/authors
+content-type: application/json
+
+{
+  "username": "Bobbi",
+  "name": "Bob"
+}
+###
+POST http://localhost:3003/api/authors
+content-type: application/json
+
+{
+  "username": "kolibri0509",
+  "name": "kolrabi",
+  "password":"bert"
+}

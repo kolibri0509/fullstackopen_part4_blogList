@@ -1,9 +1,17 @@
 const mongoose = require('mongoose')
 
 const authorSchema = new mongoose.Schema({
-    username: String,
+    username: {
+        type:String,
+        required: true,
+        unique: true,
+        minlength: 3
+    },
     name: String,
-    passwordHash: String,
+    passwordHash: {
+        type: String,
+        require: true
+    }
 })
 
 authorSchema.set('toJSON', {

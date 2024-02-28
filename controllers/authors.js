@@ -10,6 +10,10 @@ authorsRouter.get('/', async (request, response) => {
 authorsRouter.post('/', async (request, response) => {
     const { username, name, password } = request.body
 
+    if (password.length < 3) {
+        return response.status(400).json({ error: 'Too short password' })
+    }
+
     const saltRounds = 10
     const passwordHash = await bcrypt.hash(password, saltRounds)
 
@@ -18,10 +22,12 @@ authorsRouter.post('/', async (request, response) => {
         name,
         passwordHash,
     })
-
-    const savedAuthor = await author.save()
-
-    response.status(201).json(savedAuthor)
+    try{
+        const savedAuthor = await author.save()
+        response.status(201).json(savedAuthor)
+    }catch{
+        response.status(400).json({ error: 'The username must be unique and at least 3 characters long' })
+    }
 })
 
 module.exports = authorsRouter

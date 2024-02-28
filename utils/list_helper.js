@@ -15,6 +15,18 @@ const initialBlogs = [
         likes:100
     }
 ]
+const initialAuthors = [
+    {
+        username:'kolibri0509',
+        name:'kolibri0509',
+        password:'kolibri0509'
+    },
+    {
+        username:'Mary S.',
+        name:'Mariya Spiridonova',
+        password:'134484'
+    }
+]
 const totalLikes = (blogs) => {
     const reducer = (sum, item) => {
         return sum + item.likes
@@ -96,5 +108,6 @@ module.exports = {
     mostBlogs,
     mostLikes,
     initialBlogs,
+    initialAuthors,
     blogsInDb
 }
