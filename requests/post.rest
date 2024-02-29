@@ -110,3 +110,19 @@ content-type: application/json
   "url": "https://github.com/kolibri0509",
   "likes": 8
 }
+###
+POST http://localhost:3003/api/login
+content-type: application/json
+
+{
+  "username": "kolibri0509",
+  "password": "kolibri0509"
+}
+###
+POST http://localhost:3003/api/login
+content-type: application/json
+
+{
+  "username": "Mary S.",
+  "password": "134484"
+}
