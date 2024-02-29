@@ -90,3 +90,23 @@ content-type: application/json
   "name": "kolrabi",
   "password":"bert"
 }
+###
+POST http://localhost:3003/api/blogs
+content-type: application/json
+
+{
+  "title": "author and blog are connected",
+  "author": "Mary S.",
+  "url": "https://github.com/kolibri0509",
+  "likes":26
+}
+###
+POST http://localhost:3003/api/blogs
+content-type: application/json
+
+{
+  "title": "author and blog",
+  "author": "kolibri0509",
+  "url": "https://github.com/kolibri0509",
+  "likes": 8
+}

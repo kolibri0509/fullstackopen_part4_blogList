@@ -11,7 +11,13 @@ const authorSchema = new mongoose.Schema({
     passwordHash: {
         type: String,
         require: true
-    }
+    },
+    blogs: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Blog'
+        }
+    ],
 })
 
 authorSchema.set('toJSON', {
