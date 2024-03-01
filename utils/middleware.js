@@ -7,10 +7,20 @@ const requestLogger = (request, response, next) => {
     logger.info('---')
     next()
 }
+
 const unknownEndpoint = (request, response) => {
     response.status(404).send({ error: 'unknown endpoint' })
 }
+
+const errorHandler = (error, request, response, next) => {
+    if (error.name ===  'JsonWebTokenError') {
+        return response.status(400).json({ error: 'token missing or invalid' })
+    }
+    next(error)
+}
+
 module.exports= {
     requestLogger,
-    unknownEndpoint
+    unknownEndpoint,
+    errorHandler
 }

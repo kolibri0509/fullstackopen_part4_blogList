@@ -93,12 +93,13 @@ content-type: application/json
 ###
 POST http://localhost:3003/api/blogs
 content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hcnkgUy4iLCJpZCI6IjY1ZGVmNjU5NDdjZTNlZjM2M2ExNDdkZiIsImlhdCI6MTcwOTI4MTc5OX0.Ikk2sx3pJDdjTnZ7Yshd-VD1WQLuWk7M3JDygDEqSi4
 
 {
-  "title": "author and blog are connected",
+  "title": "authorization by token",
   "author": "Mary S.",
   "url": "https://github.com/kolibri0509",
-  "likes":26
+  "likes": 1
 }
 ###
 POST http://localhost:3003/api/blogs
