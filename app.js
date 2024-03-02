@@ -25,6 +25,7 @@ mongoose.connect(config.MONGODB_URI)
         console.log('error connecting to MongoDB:', error.message)
     })
 
+app.use(middleware.tokenExtractor)
 app.use('/api/blogs', blogsRouter)
 app.use('/api/authors', authorsRouter)
 app.use('/api/login', loginRouter)

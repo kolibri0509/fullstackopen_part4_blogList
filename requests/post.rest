@@ -104,6 +104,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc
 ###
 POST http://localhost:3003/api/blogs
 content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hcnkgUy4iLCJpZCI6IjY1ZGVmNjU5NDdjZTNlZjM2M2ExNDdkZiIsImlhdCI6MTcwOTI4NTAwNn0.utc8_u_DbsBewyubkMKbVwzW0LwZrS4yF6naQarRl2E
+
+{
+  "title": "middleware",
+  "author": "Mary S.",
+  "url": "https://github.com/kolibri0509",
+  "likes": 5
+}
+###
+POST http://localhost:3003/api/blogs
+content-type: application/json
 
 {
   "title": "author and blog",
@@ -126,4 +137,26 @@ content-type: application/json
 {
   "username": "Mary S.",
   "password": "134484"
+}
+###
+POST http://localhost:3003/api/blogs
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hcnkgUy4iLCJpZCI6IjY1ZGVmNjU5NDdjZTNlZjM2M2ExNDdkZiIsImlhdCI6MTcwOTMwOTMxMywiZXhwIjoxNzA5MzEyOTEzfQ.Vqq1aAb08-hJj6R7rugDOgXlwi4YDHOVdyTZZUZYuWg
+
+{
+  "title": "Xo-Xo-Xo",
+  "author": "Mary S.",
+  "url": "https://github.com/kolibri0509",
+  "likes": 11
+}
+###
+POST http://localhost:3003/api/blogs
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hcnkgUy4iLCJpZCI6IjY1ZGVmNjU5NDdjZTNlZjM2M2ExNDdkZiIsImlhdCI6MTcwOTQwMDE0NiwiZXhwIjoxNzA5NDAzNzQ2fQ.66XEvOvpaP7hIr2uc1y6ObZ_OtJ9u_FTcHlCkil45MU
+
+{
+  "title": "AAAAAA",
+  "author": "Mary S.",
+  "url": "https://github.com/kolibri0509",
+  "likes": 110
 }
