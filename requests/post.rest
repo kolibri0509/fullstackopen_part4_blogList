@@ -141,7 +141,7 @@ content-type: application/json
 ###
 POST http://localhost:3003/api/blogs
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hcnkgUy4iLCJpZCI6IjY1ZGVmNjU5NDdjZTNlZjM2M2ExNDdkZiIsImlhdCI6MTcwOTMwOTMxMywiZXhwIjoxNzA5MzEyOTEzfQ.Vqq1aAb08-hJj6R7rugDOgXlwi4YDHOVdyTZZUZYuWg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hcnkgUy4iLCJpZCI6IjY1ZGVmNjU5NDdjZTNlZjM2M2ExNDdkZiIsImlhdCI6MTcwOTU1MDcyMywiZXhwIjoxNzA5NTU0MzIzfQ.GDpbNlmsCqPlbv7HR_w2vWZIafhU7qGvycebtW5wREM
 
 {
   "title": "Xo-Xo-Xo",
@@ -152,7 +152,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc
 ###
 POST http://localhost:3003/api/blogs
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hcnkgUy4iLCJpZCI6IjY1ZGVmNjU5NDdjZTNlZjM2M2ExNDdkZiIsImlhdCI6MTcwOTQwMDE0NiwiZXhwIjoxNzA5NDAzNzQ2fQ.66XEvOvpaP7hIr2uc1y6ObZ_OtJ9u_FTcHlCkil45MU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hcnkgUy4iLCJpZCI6IjY1ZGVmNjU5NDdjZTNlZjM2M2ExNDdkZiIsImlhdCI6MTcwOTU1MDcyMywiZXhwIjoxNzA5NTU0MzIzfQ.GDpbNlmsCqPlbv7HR_w2vWZIafhU7qGvycebtW5wREM
 
 {
   "title": "AAAAAA",
@@ -160,3 +160,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc
   "url": "https://github.com/kolibri0509",
   "likes": 110
 }
+###
+DELETE  http://localhost:3003/api/blogs/65e5b49296e47e557c0955fb
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR6cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hcnkgUy4iLCJpZCI6IjY1ZGVmNjU5NDdjZTNlZjM2M2ExNDdkZiIsImlhdCI6MTcwOTU1MDcyMywiZXhwIjoxNzA5NTU0MzIzfQ.GDpbNlmsCqPlbv7HR_w2vWZIafhU7qGvycebtW5wREM
