@@ -10,7 +10,7 @@ const requestLogger = (request, response, next) => {
     next()
 }
 
-const tokenExtractor = async (request, response, next) => {
+const tokenUserExtractor = async (request, response, next) => {
     try{
         const authorization = request.get('authorization')
         if(authorization && authorization.startsWith('Bearer ')){
@@ -48,5 +48,5 @@ module.exports= {
     requestLogger,
     unknownEndpoint,
     errorHandler,
-    tokenExtractor
+    tokenUserExtractor
 }

@@ -152,10 +152,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc
 ###
 POST http://localhost:3003/api/blogs
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hcnkgUy4iLCJpZCI6IjY1ZGVmNjU5NDdjZTNlZjM2M2ExNDdkZiIsImlhdCI6MTcwOTU1MDcyMywiZXhwIjoxNzA5NTU0MzIzfQ.GDpbNlmsCqPlbv7HR_w2vWZIafhU7qGvycebtW5wREM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtvbGlicmkwNTA5IiwiaWQiOiI2NWRlZjY0ZTQ3Y2UzZWYzNjNhMTQ3ZGQiLCJpYXQiOjE3MDk2MjA3OTAsImV4cCI6MTcwOTYyNDM5MH0.wTMk-JdbBDfaywFScPAQB_9gzBX1wehhFeuk_J2RBSc
 
 {
-  "title": "AAAAAA",
+  "title": "BBBBBB",
   "author": "Mary S.",
   "url": "https://github.com/kolibri0509",
   "likes": 110
