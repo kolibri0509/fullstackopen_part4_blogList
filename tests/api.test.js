@@ -7,6 +7,7 @@ const api = supertest(app)
 const Blog = require('..//models/db')
 const Author = require('../models/author')
 const helper = require('../utils/list_helper')
+const { request } = require('node:http')
 
 beforeEach(async () => {
     await Blog.deleteMany({})
@@ -34,12 +35,13 @@ test('id', async () => {
 })
 test('blog without title is not added', async () => {
     const newBlog = {
-        author:'Henri Miller',
+        author:'kolibri0509',
         url:'https://miller.com',
         likes: 2
     }
     await api
         .post('/api/blogs')
+        .set({ Accept: 'application/json', 'Authorization': `Bearer ${request.token}` })
         .send(newBlog)
         .expect(400)
     const response = await api.get('/api/blogs')
@@ -47,12 +49,13 @@ test('blog without title is not added', async () => {
 })
 test('blog without url is not added', async () => {
     const newBlog = {
-        author:'Henri Miller',
+        author:'kolibri0509',
         title:'superMann',
         likes: 122
     }
     await api
         .post('/api/blogs')
+        .set({ Accept: 'application/json', 'Authorization': `Bearer ${request.token}` })
         .send(newBlog)
         .expect(400)
     const response = await api.get('/api/blogs')
@@ -67,6 +70,7 @@ test('a valid blog can be added', async () => {
     }
     await api
         .post('/api/blogs')
+        .set({ Accept: 'application/json', 'Authorization': `Bearer ${request.token}` })
         .send(newBlog)
         .expect(201)
         .expect('Content-Type', /application\/json/)
@@ -85,6 +89,7 @@ test('no likes change to 0', async () => {
     }
     await api
         .post('/api/blogs')
+        .set({ Accept: 'application/json', 'Authorization': `Bearer ${request.token}` })
         .send(newBlog)
         .expect(201)
         .expect('Content-Type', /application\/json/)
@@ -99,6 +104,7 @@ describe('deleting', () => {
         const deleteBlog = blogsAtStart[0]
         await api
             .delete(`/api/blogs/${deleteBlog.id}`)
+            .set({ Accept: 'application/json', 'Authorization': `Bearer ${request.token}` })
             .expect(204)
         const blogsAtEnd = await helper.blogsInDb()
         assert.strictEqual(blogsAtEnd.length, helper.initialBlogs.length-1)
@@ -199,6 +205,21 @@ describe('new author validation', () => {
         const response = await api.get('/api/authors')
         assert.strictEqual(response.body.length, helper.initialAuthors.length)
     })
+})
+
+test('adding a post without a token will return 401', async () => {
+    const newBlog = {
+        title: 'my github profile',
+        author: 'kolibri0509',
+        url: 'https://github.com/kolibri0509',
+        likes: 888
+    }
+    const falseToken = 12345
+    await api
+        .post('/api/blogs')
+        .set({ Accept: 'application/json', 'Authorization': `Bearer ${falseToken}` })
+        .send(newBlog)
+        .expect(401)
 })
 
 after(async () => {
